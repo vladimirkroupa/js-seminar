@@ -93,6 +93,22 @@
 <h3>
 <a id="2-function-invocation-pattern" class="anchor" href="#2-function-invocation-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Function Invocation Pattern</h3>
 
+<blockquote>
+<p>When function is not a property of an object, it is invoked as a function.</p>
+</blockquote>
+
+<p><code>var sum = add(3, 4);</code></p>
+
+<blockquote>
+<p>When function is invoked with this pattern, this is bound to the global object.
+A consequence of this is that a method cannot employ an inner function to help it.</p>
+</blockquote>
+
+<ul>
+<li><a href="https://jsbin.com/wapini/1/edit?js,console,output">inner function and this</a></li>
+<li><a href="https://jsbin.com/jimuxa/1/edit?js,console,output">workaround</a></li>
+</ul>
+
 <h3>
 <a id="3-constructor-invocation-pattern" class="anchor" href="#3-constructor-invocation-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Constructor Invocation Pattern</h3>
 
