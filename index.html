@@ -76,9 +76,9 @@
 <h3>
 <a id="1-method-invocation-pattern" class="anchor" href="#1-method-invocation-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Method Invocation Pattern</h3>
 
-<p><code>var a = { fun : console.log };</code></p>
-
-<p><code>a.fun('a');</code></p>
+<pre><code>var a = { fun : console.log };
+a.fun('a');
+</code></pre>
 
 <blockquote>
 <p>Function stored as property of an object is a <em>method</em>. </p>
@@ -97,7 +97,8 @@
 <p>When function is not a property of an object, it is invoked as a function.</p>
 </blockquote>
 
-<p><code>var sum = add(3, 4);</code></p>
+<pre><code>var sum = add(3, 4);
+</code></pre>
 
 <blockquote>
 <p>When function is invoked with this pattern, <code>this</code> is bound to the global object.
@@ -112,8 +113,37 @@ A consequence of this is that a method cannot employ an inner function to help i
 <h3>
 <a id="3-constructor-invocation-pattern" class="anchor" href="#3-constructor-invocation-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Constructor Invocation Pattern</h3>
 
+<blockquote>
+<p>If a function is invoked with the <code>new</code> prefix, then a new object will be created with a hidden link to the value of the function's <code>prototype</code> member, and <code>this</code> will be bound to that new object.</p>
+</blockquote>
+
+<pre><code>var air = new Air(encyInstance, jq);
+air.initAirTab();
+air.initSearchTab();
+</code></pre>
+
+<blockquote>
+<p>The <code>new</code> prefix also changes the behavior of the <code>return</code> statement.
+If the function was invoked with the <code>new</code> prefix and the <code>return</code> value is not an object, then <code>this</code> (the new object) is returned instead.</p>
+</blockquote>
+
+<pre><code>function Air(encyInstance, jQuery) {
+    this.airService = new AirService(encyInstance);
+    this.dialogFactory = new DialogFactory(window, this.airService, encyInstance, jQuery);        
+    // there is no return statement
+}
+</code></pre>
+
+<blockquote>
+<p>Functions that are intended to be used with the <code>new</code> prefix are called <em>constructors</em>. By convention, the should be capitalized.
+If a constructor is called without the <code>new</code> prefix, bad things happen.</p>
+</blockquote>
+
 <h3>
 <a id="4-apply-invocation-pattern" class="anchor" href="#4-apply-invocation-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Apply Invocation Pattern</h3>
+
+<p><a href="https://jsbin.com/xehuhomane/1/edit?js,console,output">using apply to supply arguments</a>
+<a href="https://jsbin.com/zixirasate/1/edit?js,console,output">using apply to supply arguments badly</a></p>
 
 <h2>
 <a id="closure" class="anchor" href="#closure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Closure</h2>
